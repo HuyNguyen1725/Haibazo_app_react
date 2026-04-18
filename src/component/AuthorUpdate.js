@@ -12,7 +12,7 @@ function AuthorUpdate() {
     }
 
     function handleUpdate() {
-        axios.patch(`http://localhost:8000/api/authors/${id}`, {
+        axios.patch(`https://java.huynguyen1725.com/api/authors/${id}`, {
             name: name
         })
         .then(res => alert("Successfully updated"))

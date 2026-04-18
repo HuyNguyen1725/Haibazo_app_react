@@ -12,7 +12,7 @@ function UpdateBook() {
     }
 
     function handleUpdate() {
-        axios.patch(`http://localhost:8000/api/books/${id}`, {
+        axios.patch(`https://java.huynguyen1725.com/api/books/${id}`, {
             title: bookTitle
         })
         .then(res => alert("Successfully updated"))

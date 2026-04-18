@@ -12,7 +12,7 @@ function UpdateReview() {
     }
 
     function handleUpdate() {
-        axios.patch(`http://localhost:8000/api/reviews/${id}`, {
+        axios.patch(`https://java.huynguyen1725.com/api/reviews/${id}`, {
             content: reviewContent
         })
         .then(res => alert("Successfully updated"))

@@ -10,7 +10,7 @@ function CreateReview() {
     const [page, setPage] = useState(0)
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/authors", {
+        axios.get("https://java.huynguyen1725.com/api/authors", {
             params: {page: page, size: 10}
         })
         .then(res => {
@@ -20,7 +20,7 @@ function CreateReview() {
     }, [])
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/books", {
+        axios.get("https://java.huynguyen1725.com/api/books", {
             params: {page: page, size: 10}
         })
         .then(res => {
@@ -45,7 +45,7 @@ function CreateReview() {
     console.log(authorChoice)
 
     function handleCreate() {
-        axios.post(`http://localhost:8000/api/reviews?authorId=${authorChoice}&bookId=${bookChoice}`, {
+        axios.post(`https://java.huynguyen1725.com/api/reviews?authorId=${authorChoice}&bookId=${bookChoice}`, {
             content: review
         })
         .then(res => {

@@ -7,7 +7,7 @@ function AuthorList() {
     const [totalPages, setTotalPages] = useState(0)
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/authors", {
+        axios.get("https://java.huynguyen1725.com/api/authors", {
             params: {page: page, size: 10}
         })
         .then(res => {
@@ -22,7 +22,7 @@ function AuthorList() {
         const id = Number(e.target.id)
         const newUsers = users.filter(u => u.id !== id)
         setUsers(newUsers)
-        axios.delete(`http://localhost:8000/api/authors/${id}`)
+        axios.delete(`https://java.huynguyen1725.com/api/authors/${id}`)
         .then(res => alert("Successfully deleted author"))
         .catch(err => console.log(err))
     }

@@ -10,7 +10,7 @@ function CreateBook() {
     console.log(authorChoice)
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/authors", {
+        axios.get("https://java.huynguyen1725.com/api/authors", {
             params: {page: page, size: 10}
         })
         .then(res => {
@@ -27,7 +27,7 @@ function CreateBook() {
     }
 
     function handleCreate() {
-        axios.post(`http://localhost:8000/api/books?authorId=${authorChoice}`, {
+        axios.post(`https://java.huynguyen1725.com/api/books?authorId=${authorChoice}`, {
             title: book
         })
         .then(res => {

@@ -7,7 +7,7 @@ function BookList() {
     const [totalPages, setTotalPages] = useState(0)
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/books", {
+        axios.get("https://java.huynguyen1725.com/api/books", {
             params: {page: page, size: 10}
         })
         .then(res => {
@@ -23,7 +23,7 @@ function BookList() {
         const id = Number(e.target.id)
         const newBooks = books.filter(u => u.id !== id)
         setBooks(newBooks)
-        axios.delete(`http://localhost:8000/api/books/${id}`)
+        axios.delete(`https://java.huynguyen1725.com/api/books/${id}`)
         .then(res => alert("Successfully deleted book"))
         .catch(err => console.log(err))
     }

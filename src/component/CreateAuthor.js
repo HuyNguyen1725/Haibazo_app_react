@@ -5,7 +5,7 @@ function CreateAuthor() {
     const [author, setAuthor] = useState("") 
 
     function handleCreate() {
-        axios.post("http://localhost:8000/api/authors", {
+        axios.post("https://java.huynguyen1725.com/api/authors", {
             name: author
         })
         .then(res => {

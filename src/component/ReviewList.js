@@ -7,7 +7,7 @@ function ReviewList() {
     const [totalPages, setTotalPages] = useState(0)
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/reviews", {
+        axios.get("https://java.huynguyen1725.com/api/reviews", {
             params: {page: page, size: 10}
         })
         .then(res => {
@@ -23,7 +23,7 @@ function ReviewList() {
         const id = Number(e.target.id)
         const newReviews = reviews.filter(u => u.id !== id)
         setReviews(newReviews)
-        axios.delete(`http://localhost:8000/api/reviews/${id}`)
+        axios.delete(`https://java.huynguyen1725.com/api/reviews/${id}`)
         .then(res => alert("Successfully deleted review"))
         .catch(err => console.log(err))
     }
