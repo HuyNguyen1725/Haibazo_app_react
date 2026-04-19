@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { LocationContext } from "./LocationContext"
+import { FaCaretRight } from "react-icons/fa"
 
 function Header() {
     const { category, child } = useContext(LocationContext)
@@ -9,9 +10,11 @@ function Header() {
             style={{ height: 50 }}
         >
             <a href="/" className="navbar-brand fw-bold">HAIBAZO BOOK REVIEW</a>
+            {category !== "" ?
             <span className="navbar-text text-white fw-bold" style={{ marginLeft: 120 }}>
-                {category !== "" ? `${category} -> ${child}` : null}
+                {category} <FaCaretRight/> {child}
             </span>
+            : null}
         </nav>
     )
 }

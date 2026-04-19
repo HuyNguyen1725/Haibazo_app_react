@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft, FaPaypal } from "react-icons/fa";
 import axios from "axios"
 
 function AuthorList() {
@@ -9,7 +9,7 @@ function AuthorList() {
 
     useEffect(() => {
         axios.get("https://java.huynguyen1725.com/api/authors", {
-            params: {page: page, size: 10}
+            params: {page: page, size: 2}
         })
         .then(res => {
             setUsers(res.data.content)
@@ -17,7 +17,7 @@ function AuthorList() {
             console.log(res.data)
         })
         .catch(err => console.log(err))
-    }, [])
+    }, [page])
 
     function handleDeleteAuthor(e) {
         const id = Number(e.target.id)
@@ -34,6 +34,19 @@ function AuthorList() {
     function handleNext() {
         setPage(page + 1)
     }
+
+    function handleSetPage(e) {
+        setPage(Number(e.target.id) - 1)
+    }
+
+    function pageLoad() {
+        let buttons = []
+        for(let i = 1; i <= totalPages; i++) {
+            buttons.push(<button id={i} disabled={page === i - 1} onClick={handleSetPage} className="authorPaginate">{i}</button>)
+        }
+        return buttons
+    }
+
     return (
         <div className="mt-3">
             <table className="table table-bordered table-striped text-center align-middle" style={{ width: 700}}>
@@ -60,9 +73,11 @@ function AuthorList() {
                     )}
                 </tbody>
             </table>
-            <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page === 0} onClick={handlePrev}><FaArrowAltCircleLeft/></button>
-            <span>Page {page + 1} / {totalPages}</span>
-            <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page + 1 >= totalPages} onClick={handleNext}><FaArrowAltCircleRight/></button>
+            <div className="d-flex">
+                <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page === 0} onClick={handlePrev}><FaArrowAltCircleLeft/></button>
+                    {pageLoad()}
+                <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page + 1 >= totalPages} onClick={handleNext}><FaArrowAltCircleRight/></button>
+            </div>
         </div>
     )
 }

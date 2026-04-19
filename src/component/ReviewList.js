@@ -9,7 +9,7 @@ function ReviewList() {
 
     useEffect(() => {
         axios.get("https://java.huynguyen1725.com/api/reviews", {
-            params: {page: page, size: 10}
+            params: {page: page, size: 2}
         })
         .then(res => {
             setReviews(res.data.content)
@@ -18,7 +18,7 @@ function ReviewList() {
             console.log(res.data)
         })
         .catch(err => console.log(err))
-    }, [])
+    }, [page])
 
     function handleDeleteReview(e) {
         const id = Number(e.target.id)
@@ -34,6 +34,18 @@ function ReviewList() {
     }
     function handleNext() {
         setPage(page + 1)
+    }
+
+    function handleSetPage(e) {
+        setPage(Number(e.target.id) - 1)
+    }
+
+    function payLoad() {
+        let buttons = []
+        for(let i = 1; i <= totalPages; i++) {
+            buttons.push(<button disabled={page === i - 1} id={i} onClick={handleSetPage} className="authorPaginate">{i}</button>)
+        }
+        return buttons
     }
 
     return (
@@ -64,9 +76,11 @@ function ReviewList() {
                     )}
                 </tbody>
             </table>
-            <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page === 0} onClick={handlePrev}><FaArrowAltCircleLeft/></button>
-            <span>Page {page + 1} / {totalPages}</span>
-            <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page + 1 >= totalPages} onClick={handleNext}><FaArrowAltCircleRight/></button>
+            <div className="d-flex">
+                <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page === 0} onClick={handlePrev}><FaArrowAltCircleLeft/></button>
+                    {payLoad()}
+                <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page + 1 >= totalPages} onClick={handleNext}><FaArrowAltCircleRight/></button>
+            </div>
         </div>
     )
 }

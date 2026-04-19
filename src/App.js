@@ -18,6 +18,7 @@ function App() {
       <LocationProvider>
       <Header />
       <div className="row">
+        
         <div className="col-sm-3">
           <MenuLeft />
         </div>
