@@ -10,10 +10,12 @@ import UpdateBook from "./component/UpdateBook";
 import CreateReview from "./component/CreateReview";
 import ReviewList from "./component/ReviewList";
 import UpdateReview from "./component/UpdateReview";
+import { LocationProvider } from "./component/LocationContext"
 
 function App() {
   return (
     <div className="container-fluid px-0">
+      <LocationProvider>
       <Header />
       <div className="row">
         <div className="col-sm-3">
@@ -33,6 +35,7 @@ function App() {
           </Routes>
         </div>
       </div>
+      </LocationProvider>
     </div>
   );
 }
