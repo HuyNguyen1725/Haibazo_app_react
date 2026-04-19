@@ -28,7 +28,7 @@ function AuthorUpdate() {
     }
 
     return (
-        <div style={{ marginTop: 10}}>
+        <div className="mt-3">
             <div>
                 <label>Update</label>
                 <input onChange={handleInputName} style={{ marginLeft: 5}} />

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 function ReviewList() {
     const [reviews, setReviews] = useState([])
@@ -36,7 +37,7 @@ function ReviewList() {
     }
 
     return (
-        <div>
+        <div className="mt-3">
         <table className="table table-bordered table-striped text-center align-middle" style={{ width: 700 }}>
                 <thead>
                     <tr>
@@ -55,17 +56,17 @@ function ReviewList() {
                             <td>{rv.authorName}</td>
                             <td>{rv.content}</td>
                             <td>
-                                <a className="btn btn-secondary" href={`/updateReview/${rv.id}`}>Update</a>
-                                <button className="btn btn-secondary" 
+                                <a className="btn btn-secondary btn-sm" href={`/updateReview/${rv.id}`}>Update</a>
+                                <button className="btn btn-secondary btn-sm" 
                                 style={{marginLeft: 5}} id={rv.id} onClick={handleDeleteReview}>Delete</button>
                             </td>
                         </tr>
                     )}
                 </tbody>
             </table>
-            <button disabled={page === 0} onClick={handlePrev}>Prev</button>
+            <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page === 0} onClick={handlePrev}><FaArrowAltCircleLeft/></button>
             <span>Page {page + 1} / {totalPages}</span>
-            <button disabled={page + 1 >= totalPages} onClick={handleNext}>Next</button>
+            <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page + 1 >= totalPages} onClick={handleNext}><FaArrowAltCircleRight/></button>
         </div>
     )
 }

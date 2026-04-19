@@ -83,7 +83,7 @@ function CreateReview() {
     }
 
     return (
-        <div style={{marginTop: 10}}>
+        <div className="mt-3">
             <div>
                 <label>Review</label>
                 <input onChange={handleReviewInput} style={{marginLeft: 5}} />

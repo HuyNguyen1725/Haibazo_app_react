@@ -59,7 +59,7 @@ function CreateBook() {
     }
 
     return (
-        <div style={{marginTop: 10}}>
+        <div className="mt-3">
             <div>
                 <label>Title</label>
                 <input onChange={handleBookInput} style={{marginLeft: 5}} />

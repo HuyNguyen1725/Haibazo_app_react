@@ -13,7 +13,7 @@ import UpdateReview from "./component/UpdateReview";
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid px-0">
       <Header />
       <div className="row">
         <div className="col-sm-3">

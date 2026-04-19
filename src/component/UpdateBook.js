@@ -28,7 +28,7 @@ function UpdateBook() {
     }
 
     return (
-        <div style={{ marginTop: 10}}>
+        <div className="mt-3">
             <div>
             <label>Update book</label>
             <input onChange={handleInputName} style={{ marginLeft: 5}} />

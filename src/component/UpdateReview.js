@@ -28,7 +28,7 @@ function UpdateReview() {
     }
 
     return (
-        <div style={{ marginTop: 10}}>
+        <div className="mt-3">
             <div>
                 <label>Update review</label>
                 <input onChange={handleInputContent} style={{ marginLeft: 5}} />

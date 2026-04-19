@@ -28,7 +28,7 @@ function CreateAuthor() {
     }
 
     return (
-        <div style={{marginTop: 10}}>
+        <div className="mt-3">
             <div>
                 <label>Name</label>
                 <input onChange={handleAuthorInput} style={{marginLeft: 5}} />
