@@ -35,7 +35,7 @@ function AuthorList() {
     }
     return (
         <div>
-            <table className="table table-bordered table-striped">
+            <table className="table table-bordered table-striped text-center align-middle" style={{ width: 700}}>
                 <thead>
                     <tr>
                         <th>No</th>
