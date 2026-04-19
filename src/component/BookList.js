@@ -43,14 +43,14 @@ function BookList() {
     function payLoad() {
         let buttons = []
         for(let i = 1; i <= totalPages; i++) {
-            buttons.push(<button disabled={page === i - 1} id={i} onClick={handleSetPage} className="authorPaginate">{i}</button>)
+            buttons.push(<button disabled={page === i - 1} id={i} onClick={handleSetPage} className="paginateBtn">{i}</button>)
         }
         return buttons
     }
 
     return (
         <div className="mt-3">
-        <table className="table table-bordered table-striped text-center align-middlex" style={{ width: 700 }}>
+        <table id="tableWidth" className="table table-bordered table-striped text-center align-middlex">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -75,9 +75,9 @@ function BookList() {
                 </tbody>
             </table>
             <div className="d-flex">
-                <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page === 0} onClick={handlePrev}><FaArrowAltCircleLeft/></button>
+                <button className="border-0 bg-transparent pagiBtn" disabled={page === 0} onClick={handlePrev}><FaArrowAltCircleLeft/></button>
                     {payLoad()}
-                <button className="border-0 bg-transparent" style={{ cursor: "pointer", fontSize:20 }} disabled={page + 1 >= totalPages} onClick={handleNext}><FaArrowAltCircleRight/></button>
+                <button className="border-0 bg-transparent pagiBtn" disabled={page + 1 >= totalPages} onClick={handleNext}><FaArrowAltCircleRight/></button>
             </div>
         </div>
     )

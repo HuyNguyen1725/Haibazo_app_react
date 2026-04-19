@@ -12,7 +12,8 @@ code {
     monospace;
 }
 
-.authorPaginate {
+/* paginateNum */
+.paginateBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,4 +22,22 @@ code {
   height: 20px;
   margin-top: 8px;
   cursor: pointer;
+}
+
+/* breadCrumb nav */
+.breadCrumb {
+  height: 25px;
+  border-bottom: solid 1px rgba(0,0,0,0.1);
+}
+
+#tableWidth {
+  width: 700px;
+}
+
+.pagiBtn {
+  font-size: 20px;
+}
+
+.tableA {
+  width: 700px;
 }

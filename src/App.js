@@ -11,6 +11,7 @@ import CreateReview from "./component/CreateReview";
 import ReviewList from "./component/ReviewList";
 import UpdateReview from "./component/UpdateReview";
 import { LocationProvider } from "./component/LocationContext"
+import BreadCrumb from "./component/BreadCrumb";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <LocationProvider>
       <Header />
       <div className="row">
-        
+        <BreadCrumb />
         <div className="col-sm-3">
           <MenuLeft />
         </div>
