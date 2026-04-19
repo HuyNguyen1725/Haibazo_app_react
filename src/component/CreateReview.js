@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import Errors from "./Errors";
 
 function CreateReview() {
     const [books, setBooks] = useState([]) 
@@ -8,6 +9,7 @@ function CreateReview() {
     const [bookChoice, setBookChoice] = useState("")
     const [review, setReview] = useState("")
     const [page, setPage] = useState(0)
+    const [errors, setErrors] = useState({})
 
     useEffect(() => {
         axios.get("https://java.huynguyen1725.com/api/authors", {
@@ -28,6 +30,20 @@ function CreateReview() {
         })
         .catch(err => console.log(err))
     }, [])
+
+    useEffect(() => {
+        const errors = {}
+        if(review === "") {
+            errors.review = "Please enter your review!"
+        } 
+        if(bookChoice === "") {
+            errors.book = "Please select a book to review!"
+        } 
+        if(authorChoice === "") {
+            errors.author = "Please select who you are!"
+        }
+        setErrors(errors)
+    }, [review, bookChoice, authorChoice])
 
 
     function authorOption() {
@@ -68,33 +84,34 @@ function CreateReview() {
 
     return (
         <div style={{marginTop: 10}}>
-            <label>Review</label>
-            <input onChange={handleReviewInput} style={{marginLeft: 5}} />
-            <br />
-            {review === "" ? <span style={{ marginLeft: 45, color: "red" }}>Please enter your review!</span> : null}
-
+            <div>
+                <label>Review</label>
+                <input onChange={handleReviewInput} style={{marginLeft: 5}} />
+                {Object.keys(errors).length === 0 ? <button onClick={handleCreate} style={{marginLeft: 5 }} 
+                className="btn btn-secondary">
+                    Create
+                </button> : null}
+            </div>
+            {errors.review !== undefined ? <div style={{ marginLeft: 60}}><Errors prop={errors.review}/></div> : null}
             <select className="form-select"
              onChange={handleAuthorChoice} 
              value={authorChoice}
-             style={{ width: 150, marginLeft: 37, marginTop: 10}}
+             style={{ width: 150, marginLeft: 56, marginTop: 10}}
              >
                 <option value={""}>Author</option>
                 {authorOption()}
             </select>
-
+            {errors.author !== undefined ? <div style={{ marginLeft: 60}}><Errors prop={errors.author}/></div> : null}
             <select className="form-select"
              onChange={handleBookChoice} 
              value={bookChoice}
-             style={{ width: 150, marginLeft: 37, marginTop: 10}}
+             style={{ width: 150, marginLeft: 56, marginTop: 10}}
              >
                 <option value={""}>Book</option>
                 {bookOption()}
             </select>
-
-            {review !== "" ? <button onClick={handleCreate} style={{marginLeft: 40, marginTop: 10}} 
-            className="btn btn-secondary">
-                Create
-            </button> : null}
+            {errors.book !== undefined ? <div style={{ marginLeft: 60}}><Errors prop={errors.book}/></div> : null}
+        
         </div>
     )
 }
